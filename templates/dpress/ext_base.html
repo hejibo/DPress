@@ -1,0 +1,25 @@
+{% extends "dpress/base.html" %}
+{% block contentwrapper%}
+    <div class="contents">
+    {% block contents %}
+        contentwrapper ....
+    {% endblock %}
+    </div>
+
+    <div class="sidebar">
+    {% block sidebar %}
+        {% block sidebar_top %}
+        {% endblock %}
+        <div class="widget">
+            <h3>Latest Posts</h3>
+            <ul>
+                <li><a href="http://blog.yangyubo.com/missing-link-found">填补人类进化史上空白的化石</a></li>
+            </ul>
+        </div>
+        {% block sidebar_bottom %}
+        {% endblock %}
+    </div>
+    {% endblock %}
+
+    <br style="clear: both;" />
+{% endblock %}

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+        <title>{{BLOG_CONFIG.title}} {% block head_title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ MEDIA_URL }}styles/base.css?v=1" />
+        <script>
+            MEDIA_URL = {{ MEDIA_URL }};
+            {% block extra_head_script %}
+            {% endblock %}
+        </script>
+    </head>
+    <body>
+        <div class="header_container">
+            <div class="header">
+                <h1><a href="">{{BLOG_CONFIG.title}}</a></h2>
+                <h2>{{BLOG_CONFIG.sub_title}}</h2>
+                <h3 class="description">{{BLOG_CONFIG.blog_simple_descn}}</h3>
+            </div>
+        </div>
+
+        <div class="page">
+            <div class="page_inner">
+
+                <div class="contentwrapper">
+                {% block contentwrapper %}
+                    contentwrapper ...
+                {% endblock %}
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>? 2008-2009 Yang Yubo // Powered by <a href="http://zine.pocoo.org/">Zine</a> // Hosted on <a href="http://www.webfaction.com/?affiliate=yospaly/">WebFaction</a></p>
+        </div>
+    </body>
+</html>

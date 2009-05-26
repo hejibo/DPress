@@ -40,7 +40,7 @@ MEDIA_ROOT = ''
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/static/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -66,17 +66,38 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'dpress.urls'
 
 TEMPLATE_DIRS = (
+        './../../templates/',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+)
+
+STATIC_DIR = './../../static'
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request",
+
+    "dpress.dpressblog.context_processors.common",
 )
 
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.admin',
     'django.contrib.sites',
+
+    'dpress.dpressblog',
 )
+
+BLOG_CONFIG = {'title': u'DPress',
+        'sub_title': u'Blog Sub Title',
+        'blog_simple_descn': u'Blog Simple Descn',
+        'End': ''}
 
 try:
     from settings_local import *
