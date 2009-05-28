@@ -7,9 +7,12 @@ from django.conf import settings
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^static/(.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_DIR}),
+    (r'^admin/filebrowser/', include('filebrowser.urls')),
+    (r'^static/(.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    (r'^tinymce/', include('tinymce.urls')),    
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/(.*)', admin.site.root),
 
+    (r'^comments/', include('dpress.comments_urls')),
     (r'^', include('dpress.dpressblog.urls')),
 )

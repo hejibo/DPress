@@ -3,7 +3,10 @@ import views
 
 urlpatterns = patterns('',
     # Example:
-    (r'^$', views.index),
+    url(r'^$', views.index, name='dpress_index'),
+    url(r'^tags/(?P<tag>[-\w]+)/$', views.index, name='dpress_tag'),
+    url(r'^post/(?P<username>[-\w]+)/(?P<year>\d{4})/(?P<month>\d{2})/(?P<slug>[-\w]+)/$', 
+        views.post, name='dpress_post'),
 
 )
 

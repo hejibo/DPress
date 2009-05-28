@@ -1,0 +1,48 @@
+{% extends "dpress/ext_base.html" %}
+{% load dpressblog_tags %}
+{% load comments %}
+
+<div class="contents">
+{% block contents %}
+    {% if tag %}
+        <h2>Entries tagged: {{tag}}</h2>
+    {% endif %}
+    {% for o in page_obj.object_list %}
+    <div class="entry">
+        <h3><a href="{{o.get_absolute_url}}">{{o}}</a></h3>
+        <p class="meta">written by <a href="{% url dpress_index %}">{{o.author}}</a>, on {{o.created_at}}</p>
+
+        <div class="text">
+            <div class="document">
+            {% render_tease o %}
+            </div>
+        </div>
+        <p class="related">
+            Tagged as:
+            {% show_tags_for_post o %}
+            |
+            <a href="{{o.get_absolute_url}}#comments">
+                {% get_comment_count for o as commentcount %} {{ commentcount }} comments
+            </a>
+        </p>
+    </div>
+    {% endfor %}
+    
+
+    <div class="pagination">
+        {% if has_previous %}
+            <a href="{% url dpress_index %}?page=1" class="next">First</a>
+            |
+            <a href="{% url dpress_index %}?page={{previous}}" class="prev">Previous</a>
+            |
+        {% endif %}
+        · <strong>{{page}}</strong> · 
+        {% if has_next %}
+            |
+            <a href="{% url dpress_index %}?page={{next}}" class="next">Next</a>
+            |
+            <a href="{% url dpress_index %}?page={{pages}}" class="next">Last</a>
+        {% endif %}
+    </div>
+{% endblock %}
+</div>

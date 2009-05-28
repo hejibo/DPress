@@ -1,0 +1,11 @@
+{% load tagging_tags %}
+
+<div class="widget">
+  <h3>Tags</h3>
+  {% tag_cloud_for_model dpressblog.Post as widget_tags with steps=4 distribution=linear %}
+  <div class="tag-cloud">
+    {% for t in widget_tags %}
+    <a href="{% url dpress_tag t %}" style="font-size: {{ t.font_size|add:"8" }}px;" title="{{ t.count }} post tagged Blogspot">{{t}}</a>
+    {% endfor %}
+  </div>
+</div>

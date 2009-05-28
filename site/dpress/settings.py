@@ -3,6 +3,8 @@
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+import os
+
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
@@ -35,17 +37,24 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = './../../static'
+#'E:/soho/dpress_svn/trunk/static'
+
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = '/static/'
+FILEBROWSER_URL_FILEBROWSER_MEDIA = MEDIA_URL + 'filebrowser/'
+FILEBROWSER_URL_WWW = MEDIA_URL + 'uploads/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/'
+
+TINYMCE_JS_URL = '%stiny_mce/tiny_mce.js' % MEDIA_URL
+TINYMCE_JS_ROOT = os.path.join(MEDIA_ROOT, 'tiny_mce')
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '#(886ewc)@$jz7opzk5@q+4xx3ged()rvmg0_d=dqq*t)*%t+w'
@@ -66,13 +75,11 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'dpress.urls'
 
 TEMPLATE_DIRS = (
-        './../../templates/',
+        './../../templates/default/',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
-
-STATIC_DIR = './../../static'
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.auth",
@@ -90,8 +97,16 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.admin',
     'django.contrib.sites',
+    'django.contrib.markup',
+    'django.contrib.comments',
+
+    'tinymce',
+    'filebrowser',
+    'tagging',
 
     'dpress.dpressblog',
+
+    #'django_evolution',
 )
 
 BLOG_CONFIG = {'title': u'DPress',
