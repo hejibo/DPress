@@ -3,9 +3,8 @@ import os, zipfile
 z = zipfile.ZipFile("../libs/tiny_mce.zip", 'r')
 
 for f in z.namelist():
-    path = os.path.join("../static/", f)
-    if not os.path.exists(os.path.dirname(path)):
-        os.mkdir(os.path.dirname(path))
-    print path
-    print f
-
+    new_filename = os.path.join("../static/", f)
+    if not os.path.exists(os.path.dirname(new_filename)):
+        os.mkdir(os.path.dirname(new_filename))
+    if new_filename[-1:][0] not in ('\\', '/'):
+        file(new_filename, 'wb').write(z.read(f))

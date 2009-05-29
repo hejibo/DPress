@@ -75,6 +75,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'dpress.urls'
 
 TEMPLATE_DIRS = (
+        './../../templates/diy_sample/',
         './../../templates/default/',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.

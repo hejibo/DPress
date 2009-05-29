@@ -1,5 +1,4 @@
 {% extends "dpress/base.html" %}
-{% load dpressblog_tags %}
 
 {% block contentwrapper%}
     <div class="contents">
@@ -9,18 +8,8 @@
     </div>
 
     <div class="sidebar">
-    {% block sidebar %}
-        {% block sidebar_top %}
-        {% endblock %}
-
-        {% last_post %}
-
-        {% include "dpress/include/tags_cloud.html" %}
-
-        {% block sidebar_bottom %}
-        {% endblock %}
+    {% include "dpress/include/sidebar.html" %}
     </div>
-    {% endblock %}
 
     <br style="clear: both;" />
 {% endblock %}
