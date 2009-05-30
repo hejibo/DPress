@@ -72,7 +72,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
-ROOT_URLCONF = 'dpress.urls'
+ROOT_URLCONF = 'dpress.prefix_urls'
 
 TEMPLATE_DIRS = (
         './../../templates/diy_sample/',
