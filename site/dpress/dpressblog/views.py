@@ -10,15 +10,20 @@ from django.contrib import comments
 from tagging.models import Tag, TaggedItem
 
 from models import Post
+from helper import archive_month_filter
 
-def index(request, username=None, tag=None, template_name="dpress/index.html"):
+def index(request, username=None, tag=None, year=None, month=None,
+        template_name="dpress/index.html"):
     if tag:
         tag = get_object_or_404(Tag, name=tag)
         posts = TaggedItem.objects.get_by_model(Post, tag)
     else:
         tag = None
         posts = Post.objects.all()
-    posts = posts.filter(status=2).select_related(depth=1).order_by("-publish")
+    posts = posts.filter(status=2).select_related(depth=1)
+    if year and month:
+        posts = archive_month_filter(year, month, posts, 'publish')
+    posts = posts.order_by("-publish")
         
     if username is not None:
         user = get_object_or_404(User, username=username.lower())

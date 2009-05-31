@@ -31,7 +31,7 @@
 
     <div class="pagination">
         {% if has_previous %}
-            <a href="{% url dpress_index %}?page=1" class="next">First</a>
+            <a href="{% url dpress_index %}?page=1" class="first">First</a>
             |
             <a href="{% url dpress_index %}?page={{previous}}" class="prev">Previous</a>
             |
@@ -41,7 +41,7 @@
             |
             <a href="{% url dpress_index %}?page={{next}}" class="next">Next</a>
             |
-            <a href="{% url dpress_index %}?page={{pages}}" class="next">Last</a>
+            <a href="{% url dpress_index %}?page={{pages}}" class="last">Last</a>
         {% endif %}
     </div>
 {% endblock %}

@@ -28,3 +28,10 @@ def last_post():
     return {
             'blogs': blogs[:5]
     }
+
+@register.inclusion_tag("dpress/include/month_links.html")
+def month_links():
+    return {
+            'dates': Post.objects.dates('publish', 'month')[:12],
+            }
+

@@ -100,6 +100,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.markup',
     'django.contrib.comments',
+    'django.contrib.syndication',
 
     'tinymce',
     'filebrowser',
@@ -110,6 +111,7 @@ INSTALLED_APPS = (
     #'django_evolution',
 )
 
+BLOG_URL = 'http://code.google.com/p/dpress/'#for rss feed
 BLOG_CONFIG = {'title': u'DPress',
         'sub_title': u'Blog Sub Title',
         'blog_simple_descn': u'Blog Simple Descn',
