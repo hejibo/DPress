@@ -6,7 +6,7 @@
         <title>{{BLOG_CONFIG.title}} {% block head_title %}{% endblock %}</title>
         <link rel="stylesheet" href="{{ MEDIA_URL }}themes/default/style.css?v=8" />
         <script>
-            MEDIA_URL = {{ MEDIA_URL }};
+            MEDIA_URL = "{{ MEDIA_URL }}";
             {% block extra_head_script %}
             {% endblock %}
         </script>

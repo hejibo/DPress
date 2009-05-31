@@ -16,4 +16,4 @@ class LatestDPressPostFeed(Feed):
         return item.publish
 
     def link(self):
-        return reverse('dpress_feeds', args=('latest',))
+        return reverse('dpress_index')
