@@ -1,10 +1,11 @@
 from django.contrib.syndication.feeds import Feed
-from models import Post
 from django.conf import settings
+from django.core.urlresolvers import reverse
+
+from models import Post
 
 class LatestDPressPostFeed(Feed):
     title = settings.BLOG_CONFIG['title']
-    link = settings.BLOG_URL
     description_template = 'dpress/feeds/description.html'
     description = settings.BLOG_CONFIG['blog_simple_descn']
 
@@ -13,3 +14,6 @@ class LatestDPressPostFeed(Feed):
 
     def item_pubdate(self, item):
         return item.publish
+
+    def link(self):
+        return reverse('dpress_feeds', args=('latest',))
