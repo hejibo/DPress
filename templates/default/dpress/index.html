@@ -1,11 +1,15 @@
 {% extends "dpress/ext_base.html" %}
 {% load dpressblog_tags %}
 {% load comments %}
+{% load pagination_tags %}
 
 <div class="contents">
 {% block contents %}
     {% if tag %}
-        <h2>Entries tagged: {{tag}}</h2>
+        <h2>Posts tagged: {{tag}}</h2>
+    {% endif %}
+    {% if archive_month %}
+        <h2>Archives: {{ archive_month|date:"F Y" }}</h2>
     {% endif %}
     {% for o in page_obj.object_list %}
     <div class="entry">
@@ -28,21 +32,6 @@
     </div>
     {% endfor %}
     
-
-    <div class="pagination">
-        {% if has_previous %}
-            <a href="{% url dpress_index %}?page=1" class="first">First</a>
-            |
-            <a href="{% url dpress_index %}?page={{previous}}" class="prev">Previous</a>
-            |
-        {% endif %}
-        · <strong>{{page}}</strong> · 
-        {% if has_next %}
-            |
-            <a href="{% url dpress_index %}?page={{next}}" class="next">Next</a>
-            |
-            <a href="{% url dpress_index %}?page={{pages}}" class="last">Last</a>
-        {% endif %}
-    </div>
+	{% render_paginate %}
 {% endblock %}
 </div>

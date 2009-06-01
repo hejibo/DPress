@@ -21,4 +21,4 @@ def archive_month_filter(year, month, queryset, date_field):
         '%s__gte' % date_field: first_day,
         '%s__lt' % date_field: last_day,
     }
-    return queryset.filter(**lookup_kwargs)
+    return queryset.filter(**lookup_kwargs), {'archive_month': date}

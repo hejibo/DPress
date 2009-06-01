@@ -14,15 +14,17 @@ from helper import archive_month_filter
 
 def index(request, username=None, tag=None, year=None, month=None,
         template_name="dpress/index.html"):
+    extra_context = {}
     if tag:
         tag = get_object_or_404(Tag, name=tag)
+        extra_context['tag'] = tag
         posts = TaggedItem.objects.get_by_model(Post, tag)
     else:
-        tag = None
         posts = Post.objects.all()
     posts = posts.filter(status=2).select_related(depth=1)
     if year and month:
-        posts = archive_month_filter(year, month, posts, 'publish')
+        posts, t_context = archive_month_filter(year, month, posts, 'publish')
+        extra_context.update(t_context)
     posts = posts.order_by("-publish")
         
     if username is not None:
@@ -32,7 +34,7 @@ def index(request, username=None, tag=None, year=None, month=None,
                        posts,
                        paginate_by=5,
                        template_name=template_name,
-                       extra_context={'tag': tag},
+                       extra_context=extra_context,
                        allow_empty=True)        
 
 def post(request, username, year, month, slug,
