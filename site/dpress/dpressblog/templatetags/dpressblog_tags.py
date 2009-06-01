@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 from django.template import Library
+from django.conf import settings
+
 from dpress.dpressblog.models import Post
 
 register = Library()
@@ -35,3 +37,7 @@ def month_links():
             'dates': Post.objects.dates('publish', 'month')[:12],
             }
 
+@register.inclusion_tag("dpress/include/import_syntaxhighlighter.html")
+def import_syntaxhighlighter_js():
+    SYNTAXHIGHLIGHTER_JS_URL = getattr(settings, 'SYNTAXHIGHLIGHTER_JS_URL', None)    
+    return {'SYNTAXHIGHLIGHTER_JS_URL': SYNTAXHIGHLIGHTER_JS_URL}

@@ -23,8 +23,11 @@ FILEBROWSER_URL_FILEBROWSER_MEDIA = MEDIA_URL + 'filebrowser/'
 FILEBROWSER_URL_WWW = MEDIA_URL + 'uploads/'
 
 ADMIN_MEDIA_PREFIX = '/media/'
+
 TINYMCE_JS_URL = '%stiny_mce/tiny_mce.js' % MEDIA_URL
 TINYMCE_JS_ROOT = os.path.join(MEDIA_ROOT, 'tiny_mce')
+
+SYNTAXHIGHLIGHTER_JS_URL = MEDIA_URL + 'syntaxhighlighter/'
 
 TEMPLATE_DIRS = (
         './../../templates/diy_sample/',

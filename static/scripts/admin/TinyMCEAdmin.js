@@ -70,6 +70,7 @@ tinyMCE.init({
     "-p[class<clearfix?summary?code]," + 
     "h2[class<clearfix],h3[class<clearfix],h4[class<clearfix]," + 
     "ul[class<clearfix],ol[class<clearfix]," + 
-    "div[class],"
+    "div[class]," +
+    "pre[class],"
 });
 }

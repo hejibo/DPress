@@ -58,6 +58,8 @@ ADMIN_MEDIA_PREFIX = '/media/'
 TINYMCE_JS_URL = '%stiny_mce/tiny_mce.js' % MEDIA_URL
 TINYMCE_JS_ROOT = os.path.join(MEDIA_ROOT, 'tiny_mce')
 
+SYNTAXHIGHLIGHTER_JS_URL = MEDIA_URL + 'syntaxhighlighter/'
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '#(886ewc)@$jz7opzk5@q+4xx3ged()rvmg0_d=dqq*t)*%t+w'
 
