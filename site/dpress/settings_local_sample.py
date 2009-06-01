@@ -15,6 +15,8 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 TIME_ZONE = 'America/Chicago'
 LANGUAGE_CODE = 'en-us'
 
+URCHIN_ID = ''
+
 MEDIA_ROOT = './../../static'
 MEDIA_URL = '/static/'
 FILEBROWSER_URL_FILEBROWSER_MEDIA = MEDIA_URL + 'filebrowser/'
