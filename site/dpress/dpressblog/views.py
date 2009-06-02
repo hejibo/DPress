@@ -47,7 +47,10 @@ def post(request, username, year, month, slug,
         raise Http404
     post=post[0]
     user = request.user
-    form = comments.get_form()(post, initial={'name': user.username, 'email': user.email})
+    initial={}
+    if user.is_authenticated():
+        initial={'name': user.username, 'email': user.email}
+    form = comments.get_form()(post, initial=initial)
     if request.method == "POST":
         data = request.POST.copy()
         form = comments.get_form()(post, data=data)
