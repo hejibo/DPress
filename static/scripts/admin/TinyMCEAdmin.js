@@ -1,6 +1,6 @@
 function CustomFileBrowser(field_name, url, type, win) {
 
-    var cmsURL = "/admin/filebrowser/?pop=2";
+    var cmsURL = "/" + PREFIX_URL + "admin/filebrowser/?pop=2";
     cmsURL = cmsURL + "&type=" + type;
     
     tinyMCE.activeEditor.windowManager.open({
@@ -25,7 +25,7 @@ tinyMCE.init({
     theme: "advanced",
     language: "en",
     skin: "o2k7",
-    browsers: "gecko",
+    browsers: "msie,gecko,opera",
     dialog_type: "modal",
     object_resizing: true,
     cleanup_on_startup: true,

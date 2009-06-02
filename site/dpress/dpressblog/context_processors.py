@@ -7,4 +7,4 @@ def common(request):
     Adds media-related context variables to the context.
 
     """
-    return {'BLOG_CONFIG': settings.BLOG_CONFIG}
+    return {'BLOG_CONFIG': settings.BLOG_CONFIG, 'PREFIX_URL': settings.PREFIX_URL}
