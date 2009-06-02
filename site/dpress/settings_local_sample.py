@@ -22,6 +22,11 @@ MEDIA_URL = '/static/'
 FILEBROWSER_URL_FILEBROWSER_MEDIA = MEDIA_URL + 'filebrowser/'
 FILEBROWSER_URL_WWW = MEDIA_URL + 'uploads/'
 
+PREFIX_URL = ''#dpress/
+
+FILEBROWSER_URL_ADMIN = '/%sadmin/filebrowser/' % PREFIX_URL
+FILEBROWSER_URL_HOME = '/%sadmin/' % PREFIX_URL
+
 ADMIN_MEDIA_PREFIX = '/media/'
 
 TINYMCE_JS_URL = '%stiny_mce/tiny_mce.js' % MEDIA_URL

@@ -37,6 +37,8 @@ URCHIN_ID = ''
 # to load the internationalization machinery.
 USE_I18N = True
 
+PREFIX_URL = ''#dpress/
+
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = './../../static'
