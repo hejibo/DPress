@@ -1,3 +1,3 @@
-cd ..
+call base_init.bat
 set /p var=please input app name:
-manage.py startapp %var%
+python manage.py startapp %var%
