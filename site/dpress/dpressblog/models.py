@@ -1,4 +1,4 @@
-from datetime import datetime
+rom datetime import datetime
 
 from django.db import models
 from django.conf import settings
@@ -34,7 +34,7 @@ class Post(models.Model):
     publish         = models.DateTimeField(_('publish'), default=datetime.now)
     created_at      = models.DateTimeField(_('created at'), default=datetime.now)
     updated_at      = models.DateTimeField(_('updated at'), auto_now=True)
-    markup          = models.CharField(_(u"Post Content Markup"), max_length=3,
+    markup          = models.CharField(_(u"Post Content Markup"), max_length=10,
                               choices=markup_choices,
                               null=True, blank=True)
     tags            = TagField()
