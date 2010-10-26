@@ -1,9 +1,9 @@
-# Django settings for dpress project.
+# Django settings for lbforum_site project.
+import os
+HERE = os.path.dirname(os.path.abspath(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-
-import os
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
@@ -12,7 +12,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'db.sqlite'             # Or path to database file if using sqlite3.
+DATABASE_NAME = os.path.join(HERE, 'db.sqlite')             # Or path to database file if using sqlite3.
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
@@ -23,44 +23,31 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 # although not all choices may be available on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'#'America/Chicago'
+TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'#'en-us'
+LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
-
-URCHIN_ID = ''
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
 USE_I18N = True
 
-PREFIX_URL = ''#dpress/
-
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = './../../static'
-#'E:/soho/dpress_svn/trunk/static'
-
+MEDIA_ROOT = os.path.join(HERE, 'static/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = '/static/'
-FILEBROWSER_URL_FILEBROWSER_MEDIA = MEDIA_URL + 'filebrowser/'
-FILEBROWSER_URL_WWW = MEDIA_URL + 'uploads/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/'
-
-TINYMCE_JS_URL = '%stiny_mce/tiny_mce.js' % MEDIA_URL
-TINYMCE_JS_ROOT = os.path.join(MEDIA_ROOT, 'tiny_mce')
-
-SYNTAXHIGHLIGHTER_JS_URL = MEDIA_URL + 'syntaxhighlighter/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '#(886ewc)@$jz7opzk5@q+4xx3ged()rvmg0_d=dqq*t)*%t+w'
@@ -78,11 +65,11 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
-ROOT_URLCONF = 'dpress.prefix_urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
-        './../../templates/diy_sample/',
-        './../../templates/default/',
+        #os.path.join(HERE, 'templates_plus'),
+        #os.path.join(HERE, 'templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -94,11 +81,18 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     "django.core.context_processors.request",
+    'django.contrib.messages.context_processors.messages',
 
-    "dpress.dpressblog.context_processors.common",
+    #"dpress.context_processors.common",
+    "grappelli.context_processors.admin_template_path",
 )
 
 INSTALLED_APPS = (
+    'grappelli',
+    'admin_tools',
+    'admin_tools.theming',
+    'admin_tools.menu',
+    'admin_tools.dashboard',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -108,14 +102,18 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'django.contrib.syndication',
 
-    'tinymce',
+    #'tinymce',
     'filebrowser',
-    'tagging',
+    #'tagging',
 
-    'dpress.dpressblog',
-
-    #'django_evolution',
+    #'dpress',
 )
+
+#TODO 
+SYNTAXHIGHLIGHTER_JS_URL = MEDIA_URL + 'syntaxhighlighter/'
+
+ADMIN_TOOLS_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
+FILEBROWSER_URL_FILEBROWSER_MEDIA = "%sfilebrowser/" % MEDIA_URL
 
 BLOG_CONFIG = {'title': u'DPress',
         'sub_title': u'Blog Sub Title',

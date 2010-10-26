@@ -1,0 +1,11 @@
+*.pyc
+*.swp
+*.sqlite
+python_env/
+requirements/filebrowser/
+requirements/grappelli/
+sites/static/attachments/
+sites/static/admin_tools/
+sites/static/filebrowser/
+sites/static/syntaxhighlighter/
+sites/static/tiny_mce/

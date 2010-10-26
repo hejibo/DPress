@@ -3,7 +3,7 @@
 from django.template import Library
 from django.conf import settings
 
-from dpress.dpressblog.models import Post
+from dpress.models import Post
 
 register = Library()
 

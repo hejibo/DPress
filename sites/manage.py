@@ -1,9 +1,10 @@
 #!/usr/bin/env python
+import os
 import sys
-sys.path.insert(0, '..')
-sys.path.insert(0, '../../apps/external_apps')
-sys.path.insert(0, '../../apps/local_apps')
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+#sys.path.insert(0, os.path.join(HERE, '../src'))
+sys.path.insert(0, os.path.join(HERE, '../requirements'))
 from django.core.management import execute_manager
 try:
     import settings # Assumed to be in the same directory.
